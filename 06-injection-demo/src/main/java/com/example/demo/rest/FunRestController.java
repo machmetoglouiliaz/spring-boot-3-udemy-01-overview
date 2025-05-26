@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FunRestController {
 
+    // Inject properties app author.name and version
+
     @Value("${info.app.author.name}")
     private String authorName;
+
+    @Value("${info.app.version}")
+    private String version;
 
     // expose "/" that return "Hello World"
     @GetMapping("/")
@@ -33,4 +38,7 @@ public class FunRestController {
     public String getFortune(){
         return "Your lucky day!";
     }
+
+    @GetMapping("/version")
+    public  String getVersion(){ return version; }
 }
